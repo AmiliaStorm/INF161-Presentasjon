@@ -1,160 +1,123 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Human Patterns Through History — Amilia</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-:root{--bg:#080b17;--panel:#101528;--line:#28314d;--text:#f4f4ff;--muted:#aebbd5;--violet:#a88bff;--cyan:#69e8e7;--pink:#ff87b2;--gold:#ffd08a}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(circle at 85% 5%,#232052 0,transparent 28%),radial-gradient(circle at 5% 80%,#102b3e 0,transparent 30%),var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#0008,transparent 80%)}
-button{font:inherit}
-header{position:sticky;z-index:30;top:0;padding:14px clamp(20px,4vw,70px);background:#080b17dc;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;gap:22px;align-items:center;justify-content:space-between}
-.brand{letter-spacing:.18em;font-weight:700;font-size:.85rem}
-.brand b{color:var(--cyan)}
-nav{display:flex;gap:7px;flex-wrap:wrap}
-.nav{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:99px;padding:9px 15px;cursor:pointer;font-size:.82rem}
-.nav:hover,.nav.active{color:var(--text);border-color:#a88bff77;background:#a88bff20}
-.counter{font:12px 'DM Mono',monospace;color:var(--cyan)}
-main{max-width:1400px;margin:auto;padding:clamp(22px,4vw,64px)}
-.page{display:none;animation:reveal .45s ease}
-.page.active{display:block}
-@keyframes reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.eyebrow{color:var(--cyan);font:12px 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
-h1{font-size:clamp(2.7rem,6vw,6.5rem);line-height:1.04;letter-spacing:-.055em;margin:20px 0;max-width:1000px}
-h1 em{font-style:normal;color:var(--violet)}
-.intro{max-width:800px;font-size:clamp(1rem,1.55vw,1.3rem);line-height:1.5;color:var(--muted)}
-.chips{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 36px}
-.chip{padding:8px 13px;border:1px solid var(--line);background:#ffffff08;border-radius:99px;color:#d9e1fa;font:12px 'DM Mono',monospace}
-.grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,.8fr);gap:20px}
-.card{background:linear-gradient(145deg,#151a30ee,#0d1325ee);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,2.4vw,32px);box-shadow:0 25px 70px #0003}
-.card h2{margin:0 0 8px;font-size:clamp(1.1rem,2vw,1.55rem)}
-.sub{color:var(--muted);font-size:.9rem;margin:0 0 24px}
-.hero-number{font-size:clamp(2.6rem,5vw,5.5rem);font-weight:700;letter-spacing:-.07em;color:var(--cyan);line-height:1}
-.hero-number.pink{color:var(--pink)}
-.hero-number.violet{color:var(--violet)}
-.side p{color:var(--muted);line-height:1.55}
-.side strong{color:white}
-.divider{height:1px;background:var(--line);margin:24px 0}
-.chart{width:100%;height:auto;overflow:visible}
-.chart text{font-family:'DM Mono',monospace}
-.bar{transition:opacity .2s,filter .2s;cursor:pointer}
-.bar:hover{filter:brightness(1.4)}
-.tip{min-height:36px;color:var(--cyan);font:13px 'DM Mono',monospace;padding-top:14px}
-.explain{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
-.mini{background:#ffffff08;border:1px solid var(--line);border-radius:18px;padding:22px;line-height:1.5}
-.mini b{display:block;color:var(--gold);font:12px 'DM Mono',monospace;letter-spacing:.1em;margin-bottom:10px}
-.mini p{margin:0;color:var(--muted)}
-.code-toggle{background:#202440;border:1px solid #5b5a86;color:white;padding:12px 18px;border-radius:12px;cursor:pointer}
-.code-toggle:hover{background:#343861}
-.code-panel{display:none;margin-top:12px}
-.code-panel.open{display:block}
-pre{overflow:auto;background:#060a16;border:1px solid var(--line);padding:20px;border-radius:16px;color:#b9ecff;font:13px/1.65 'DM Mono',monospace}
-details{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:15px 18px;background:#ffffff06}
-summary{cursor:pointer;font-weight:600}
-details p{color:var(--muted);line-height:1.5}
-.controls{display:flex;align-items:center;justify-content:space-between;margin:42px 0 12px;gap:12px}
-.arrow{background:#a88bff20;color:white;border:1px solid #a88bff80;padding:12px 20px;border-radius:12px;cursor:pointer}
-.arrow:hover{background:#a88bff50}
-footer{color:#7786a5;font:11px 'DM Mono',monospace;text-align:center;padding:16px 0 36px}
-.spark{position:absolute;right:8%;top:130px;width:180px;height:180px;border:1px solid #a88bff66;border-radius:50%;box-shadow:0 0 70px #a88bff44,inset 0 0 70px #69e8e733;pointer-events:none;animation:float 8s ease-in-out infinite}
-.spark:after{content:"✦";position:absolute;top:45%;left:45%;color:var(--cyan);font-size:25px}
-@keyframes float{50%{transform:translateY(18px) rotate(16deg)}}
-.callout{color:var(--gold);font-size:.84rem;margin-top:18px;line-height:1.5}
-
-.butterfly{position:fixed;left:0;top:0;z-index:100;pointer-events:none;width:48px;height:48px;opacity:0;transform:translate(-100px,-100px);filter:drop-shadow(0 0 10px #a88bff80);transition:opacity .3s,filter .3s}
-.butterfly.visible{opacity:1}
-.butterfly.glow{filter:drop-shadow(0 0 18px #69e8e7) drop-shadow(0 0 5px #ff87b2)}
-.butterfly svg{width:100%;height:100%;overflow:visible;animation:butterfly-bob 2.2s ease-in-out infinite}
-.wing-left,.wing-right{transform-box:fill-box;transform-origin:right center;animation:wing-left .24s ease-in-out infinite alternate}
-.wing-right{transform-origin:left center;animation-name:wing-right}
-@keyframes wing-left{to{transform:scaleX(.38) rotate(-9deg)}}
-@keyframes wing-right{to{transform:scaleX(.38) rotate(9deg)}}
-@keyframes butterfly-bob{50%{transform:translateY(-7px) rotate(5deg)}}
-@media(pointer:coarse){.butterfly{display:none}}
-@media(max-width:850px){
-  .grid,.explain{grid-template-columns:1fr}
-  .spark{opacity:.3}
-  header{align-items:flex-start;flex-direction:column;gap:10px}
-  .counter{display:none}
-  main{padding:26px 18px}
-  .chart{min-width:590px}
-  .chart-scroll{overflow-x:auto}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Human Patterns Through History — Amilia</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-<header>
-  <div class="brand">AMILIA <b>◆</b> HUMAN PATTERNS</div>
-  <nav aria-label="Presentation topics">
-    <button class="nav active" data-page="0">01 · Relationship</button>
-    <button class="nav" data-page="1">02 · Surprise</button>
-    <button class="nav" data-page="2">03 · History</button>
-  </nav>
-  <span class="counter" id="counter">01 / 03</span>
-</header>
+  <header>
+    <div class="brand">AMILIA <b>◆</b> HUMAN PATTERNS</div>
 
-<div class="spark" aria-hidden="true"></div>
+    <nav aria-label="Presentation topics">
+      <button class="nav active" data-page="0">01 · Relationship</button>
+      <button class="nav" data-page="1">02 · Surprise</button>
+      <button class="nav" data-page="2">03 · History</button>
+    </nav>
 
-<div class="butterfly" id="butterfly" aria-hidden="true">
-  <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-    <g class="wing-left">
-      <path d="M29 29C14 2 1 7 8 26C-2 35 10 49 29 35Z" fill="#a88bff" stroke="#e3d4ff" stroke-width="1.5"/>
-      <path d="M27 28C19 13 12 15 16 26C10 33 19 38 27 32Z" fill="#ff87b2" opacity=".8"/>
-      <circle cx="16" cy="24" r="2" fill="#fff"/>
-    </g>
-    <g class="wing-right">
-      <path d="M31 29C46 2 59 7 52 26C62 35 50 49 31 35Z" fill="#69e8e7" stroke="#dcffff" stroke-width="1.5"/>
-      <path d="M33 28C41 13 48 15 44 26C50 33 41 38 33 32Z" fill="#a88bff" opacity=".8"/>
-      <circle cx="44" cy="24" r="2" fill="#fff"/>
-    </g>
-    <path d="M30 24Q25 17 23 16M30 24Q35 17 37 16" fill="none" stroke="#e3d4ff" stroke-width="1.5" stroke-linecap="round"/>
-    <ellipse cx="30" cy="32" rx="2.6" ry="11" fill="#f5edff"/>
-  </svg>
-</div>
+    <button class="utility" id="fullscreen" type="button">⛶ Fullscreen</button>
+    <span class="counter" id="counter">01 / 03</span>
+  </header>
 
-<main>
-  <section class="page active" id="relationship">
-    <div class="eyebrow">01 / An interesting relationship · birth year × estimated belief</div>
-    <h1>Birth period and <em>belief in God</em></h1>
-    <p class="intro">Across the real personas in this dataset, later birth years tend to be associated with lower estimated probability that God exists.</p>
-    <div class="chips">
-      <span class="chip">9,000 real personas</span>
-      <span class="chip">Spearman ρ = −0.436</span>
-      <span class="chip">Median by birth period</span>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h2>Belief in God across birth periods</h2>
-        <p class="sub">Median of <code>values.p_god_exists</code> · percent scale · hover over a bar for sample size</p>
-        <div class="chart-scroll">
-          <svg class="chart" id="god-chart" role="img" aria-label="Median estimated probability God exists: 85 percent BCE, 100 in 0 to 999 and 1000 to 1499, 95 in 1500 to 1799, 70 in 1800 to 1899, and 50 in the two latest birth periods"></svg>
+  <div class="spark" aria-hidden="true"></div>
+
+  <div class="butterfly" id="butterfly" aria-hidden="true">
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g class="wing-left">
+        <path d="M29 29C14 2 1 7 8 26C-2 35 10 49 29 35Z"
+              fill="#a88bff" stroke="#e3d4ff" stroke-width="1.5"/>
+        <path d="M27 28C19 13 12 15 16 26C10 33 19 38 27 32Z"
+              fill="#ff87b2" opacity=".8"/>
+        <circle cx="16" cy="24" r="2" fill="#fff"/>
+      </g>
+      <g class="wing-right">
+        <path d="M31 29C46 2 59 7 52 26C62 35 50 49 31 35Z"
+              fill="#69e8e7" stroke="#dcffff" stroke-width="1.5"/>
+        <path d="M33 28C41 13 48 15 44 26C50 33 41 38 33 32Z"
+              fill="#a88bff" opacity=".8"/>
+        <circle cx="44" cy="24" r="2" fill="#fff"/>
+      </g>
+      <path d="M30 24Q25 17 23 16M30 24Q35 17 37 16"
+            fill="none" stroke="#e3d4ff" stroke-width="1.5"
+            stroke-linecap="round"/>
+      <ellipse cx="30" cy="32" rx="2.6" ry="11" fill="#f5edff"/>
+    </svg>
+  </div>
+
+  <main>
+    <section class="page active" id="relationship">
+      <div class="eyebrow">
+        01 / An interesting relationship · birth year × estimated belief
+      </div>
+      <h1>Birth period and <em>belief in God</em></h1>
+      <p class="intro">
+        Across the real personas in this dataset, later birth years tend to be
+        associated with lower estimated probability that God exists.
+      </p>
+
+      <div class="chips">
+        <span class="chip">9,000 real personas</span>
+        <span class="chip">Spearman ρ = −0.436</span>
+        <span class="chip">Median by birth period</span>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Belief in God across birth periods</h2>
+          <p class="sub">
+            Median of <code>values.p_god_exists</code> · percent scale ·
+            hover over a bar for sample size
+          </p>
+          <div class="chart-scroll">
+            <svg class="chart" id="god-chart" role="img"
+                 aria-label="Median estimated probability God exists across seven birth periods"></svg>
+          </div>
+          <div class="tip" id="god-tip" aria-live="polite">
+            Hover over a bar to explore the data ✦
+          </div>
+          <button class="utility table-toggle" type="button"
+                  data-table="god-table" aria-expanded="false">
+            Show numbers
+          </button>
+          <div class="data-table" id="god-table" hidden></div>
         </div>
-        <div class="tip" id="god-tip" aria-live="polite">Hover over a bar to explore the data ✦</div>
+
+        <div class="card side">
+          <span class="eyebrow">The signal</span>
+          <div class="hero-number violet">−0.44</div>
+          <p>
+            Spearman’s ρ for <strong>birth year and estimated belief</strong>.
+            A moderate negative monotonic association in these records.
+          </p>
+          <div class="divider"></div>
+          <p class="callout">
+            These values are persona estimates, not direct historical survey answers.
+          </p>
+        </div>
       </div>
-      <div class="card side">
-        <span class="eyebrow">The signal</span>
-        <div class="hero-number violet">−0.44</div>
-        <p>Spearman’s ρ for <strong>birth year and estimated belief</strong>. A moderate negative monotonic association in these records.</p>
-        <div class="divider"></div>
-        <p class="callout">These values are persona estimates, not direct historical survey answers.</p>
+
+      <div class="explain">
+        <div class="mini">
+          <b>OBSERVE</b>
+          <p>The median generally falls across later birth cohorts.</p>
+        </div>
+        <div class="mini">
+          <b>INTERPRET</b>
+          <p>Later-born personas are coded with lower estimated religious belief.</p>
+        </div>
+        <div class="mini">
+          <b>LIMIT</b>
+          <p>The sample is not a representative population. Association does not show cause.</p>
+        </div>
       </div>
-    </div>
-    <div class="explain">
-      <div class="mini"><b>OBSERVE</b><p>The median generally falls across later birth cohorts.</p></div>
-      <div class="mini"><b>INTERPRET</b><p>Later-born personas are coded with lower estimated religious belief.</p></div>
-      <div class="mini"><b>LIMIT</b><p>The sample is not a representative population. Association does not show cause.</p></div>
-    </div>
-    <button class="code-toggle" aria-expanded="false">⌘ Show analysis code</button>
-    <div class="code-panel">
-      <pre>history_df = persona_df.loc[X_train_reg.index].copy()
+
+      <button class="code-toggle" aria-expanded="false">
+        ⌘ Show analysis code
+      </button>
+      <div class="code-panel">
+<pre>history_df = persona_df.loc[X_train_reg.index].copy()
 
 # Beholder bare virkelige mennesker
 history_df = history_df[
@@ -163,26 +126,14 @@ history_df = history_df[
 ].copy()
 
 bins = [
-    -np.inf,
-    0,
-    1000,
-    1500,
-    1800,
-    1900,
-    1950,
-    2000,
-    np.inf
+    -np.inf, 0, 1000, 1500, 1800,
+    1900, 1950, 2000, np.inf
 ]
 
 labels = [
-    "BCE",
-    "0 to 999",
-    "1000 to 1499",
-    "1500 to 1799",
-    "1800 to 1899",
-    "1900 to 1949",
-    "1950 to 1999",
-    "2000+"
+    "BCE", "0 to 999", "1000 to 1499",
+    "1500 to 1799", "1800 to 1899",
+    "1900 to 1949", "1950 to 1999", "2000+"
 ]
 
 history_df["period"] = pd.cut(
@@ -197,47 +148,96 @@ god_by_period = (
     .groupby("period", observed=False)["values.p_god_exists"]
     .median()
 )</pre>
-      <p class="callout">From prosjekt.ipynb, cells 46–48. The plotted values on this site were recalculated using all real personas: replace the first line with <code>history_df = persona_df.copy()</code> before the real-person filter.</p>
-    </div>
-    <details>
-      <summary>Presenter notes · 4–5 minute route</summary>
-      <p>Introduce the two variables and the real-person filter. Explain why periods make the chart readable and why median summarizes each group. Point to the later cohorts and explain Spearman’s rank-based direction. Finish by distinguishing persona estimates from observed beliefs and association from cause.</p>
-    </details>
-  </section>
+        <p class="callout">
+          From prosjekt.ipynb, cells 46–48. The plotted values on this site
+          were recalculated using all real personas: replace the first line
+          with <code>history_df = persona_df.copy()</code> before the
+          real-person filter.
+        </p>
+      </div>
 
-  <section class="page" id="surprise">
-    <div class="eyebrow">02 / The most surprising finding · expectation versus data</div>
-    <h1>The most <em>surprising finding</em></h1>
-    <p class="intro">I expected the desire to live forever to be common across eras. Instead, this dataset shows a striking difference between the earliest and latest birth cohorts.</p>
-    <div class="chips">
-      <span class="chip">Boolean → 1 / 0</span>
-      <span class="chip">Group mean → percent</span>
-      <span class="chip">Real personas only</span>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h2>Who is coded as wanting to live forever?</h2>
-        <p class="sub">Percent of real personas in each birth cohort · hover for counts</p>
-        <div class="chart-scroll">
-          <svg class="chart" id="surprise-chart" role="img" aria-label="Percent wanting to live forever falls from 34.5 percent BCE to 3.2 percent for births 1950 to 1999"></svg>
+      <details>
+        <summary>Presenter notes · 4–5 minute route</summary>
+        <p>
+          Introduce the two variables and the real-person filter. Explain
+          why periods make the chart readable and why median summarizes each
+          group. Point to the later cohorts and explain Spearman’s rank-based
+          direction. Finish by distinguishing persona estimates from observed
+          beliefs and association from cause.
+        </p>
+      </details>
+    </section>
+
+    <section class="page" id="surprise">
+      <div class="eyebrow">
+        02 / The most surprising finding · expectation versus data
+      </div>
+      <h1>The most <em>surprising finding</em></h1>
+      <p class="intro">
+        I expected the desire to live forever to be common across eras.
+        Instead, this dataset shows a striking difference between the
+        earliest and latest birth cohorts.
+      </p>
+
+      <div class="chips">
+        <span class="chip">Boolean → 1 / 0</span>
+        <span class="chip">Group mean → percent</span>
+        <span class="chip">Real personas only</span>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Who is coded as wanting to live forever?</h2>
+          <p class="sub">
+            Percent of real personas in each birth cohort · hover for counts
+          </p>
+          <div class="chart-scroll">
+            <svg class="chart" id="surprise-chart" role="img"
+                 aria-label="Percent wanting to live forever by birth period"></svg>
+          </div>
+          <div class="tip" id="surprise-tip" aria-live="polite">
+            Hover over a bar to explore the data ✦
+          </div>
+          <button class="utility table-toggle" type="button"
+                  data-table="surprise-table" aria-expanded="false">
+            Show numbers
+          </button>
+          <div class="data-table" id="surprise-table" hidden></div>
         </div>
-        <div class="tip" id="surprise-tip" aria-live="polite">Hover over a bar to explore the data ✦</div>
+
+        <div class="card side">
+          <span class="eyebrow">The unexpected gap</span>
+          <div class="hero-number pink">
+            34.5% <span class="small-arrow">→</span> 3.2%
+          </div>
+          <p>
+            <strong>BCE versus 1950–1999:</strong> a difference of about
+            31 percentage points in how these personas are coded.
+          </p>
+          <div class="divider"></div>
+        </div>
       </div>
-      <div class="card side">
-        <span class="eyebrow">The unexpected gap</span>
-        <div class="hero-number pink">34.5% <span style="color:var(--muted);font-size:.38em">→</span> 3.2%</div>
-        <p><strong>BCE versus 1950–1999:</strong> a difference of about 31 percentage points in how these personas are coded.</p>
-        <div class="divider"></div>
+
+      <div class="explain">
+        <div class="mini">
+          <b>EXPECTATION</b>
+          <p>Would the wish to live forever be similar across eras?</p>
+        </div>
+        <div class="mini">
+          <b>RESULT</b>
+          <p>It is much more frequent among the BCE personas.</p>
+        </div>
+        <div class="mini">
+          <b>CAUTION</b>
+          <p>Selection and persona construction may shape the difference.</p>
+        </div>
       </div>
-    </div>
-    <div class="explain">
-      <div class="mini"><b>EXPECTATION</b><p>Would the wish to live forever be similar across eras?</p></div>
-      <div class="mini"><b>RESULT</b><p>It is much more frequent among the BCE personas.</p></div>
-      <div class="mini"><b>CAUTION</b><p>Selection and persona construction may shape the difference.</p></div>
-    </div>
-    <button class="code-toggle" aria-expanded="false">⌘ Show analysis code</button>
-    <div class="code-panel">
-      <pre>history_df = persona_df.loc[X_train_reg.index].copy()
+
+      <button class="code-toggle" aria-expanded="false">
+        ⌘ Show analysis code
+      </button>
+      <div class="code-panel">
+<pre>history_df = persona_df.loc[X_train_reg.index].copy()
 
 # Beholder bare virkelige mennesker
 history_df = history_df[
@@ -246,26 +246,14 @@ history_df = history_df[
 ].copy()
 
 bins = [
-    -np.inf,
-    0,
-    1000,
-    1500,
-    1800,
-    1900,
-    1950,
-    2000,
-    np.inf
+    -np.inf, 0, 1000, 1500, 1800,
+    1900, 1950, 2000, np.inf
 ]
 
 labels = [
-    "BCE",
-    "0 to 999",
-    "1000 to 1499",
-    "1500 to 1799",
-    "1800 to 1899",
-    "1900 to 1949",
-    "1950 to 1999",
-    "2000+"
+    "BCE", "0 to 999", "1000 to 1499",
+    "1500 to 1799", "1800 to 1899",
+    "1900 to 1949", "1950 to 1999", "2000+"
 ]
 
 history_df["period"] = pd.cut(
@@ -290,49 +278,105 @@ live_forever_by_period = (
     .groupby("period", observed=False)["live_forever_numeric"]
     .mean() * 100
 )</pre>
-      <p class="callout">From prosjekt.ipynb, cells 46–48. The plotted values on this site were recalculated using all real personas: replace the first line with <code>history_df = persona_df.copy()</code> before the real-person filter.</p>
-    </div>
-    <details>
-      <summary>Presenter notes · 4–5 minute route</summary>
-      <p>Open with what you expected. Walk the audience from 34.5% BCE to 3.2% in 1950–1999, noting the small uptick in 1900–1949. Show how mapping True to 1 makes the mean a share. Explain why this is a surprising pattern among selected personas rather than a claim about historical populations.</p>
-    </details>
-  </section>
+        <p class="callout">
+          From prosjekt.ipynb, cells 46–48. The plotted values on this site
+          were recalculated using all real personas: replace the first line
+          with <code>history_df = persona_df.copy()</code> before the
+          real-person filter.
+        </p>
+      </div>
 
-  <section class="page" id="history">
-    <div class="eyebrow">03 / Group differences or historical change · birth cohorts</div>
-    <h1>Change across <em>birth periods</em></h1>
-    <p class="intro">Compare seven birth cohorts. The broad downward pattern is clear, although it is not perfectly steady across every period.</p>
-    <div class="chips">
-      <span class="chip">BCE → 1950–1999</span>
-      <span class="chip">7 cohorts</span>
-      <span class="chip">Cross-sectional comparison</span>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h2>Desire to live forever by birth period</h2>
-        <p class="sub">Share of real personas coded True · each dot is a cohort, not a time-series measurement</p>
-        <div class="chart-scroll">
-          <svg class="chart" id="history-chart" role="img" aria-label="Line chart of percent wanting to live forever across seven birth cohorts: 34.5, 23.0, 13.0, 7.8, 4.0, 5.1, 3.2 percent"></svg>
+      <details>
+        <summary>Presenter notes · 4–5 minute route</summary>
+        <p>
+          Open with what you expected. Walk the audience from 34.5% BCE to
+          3.2% in 1950–1999, noting the small uptick in 1900–1949. Show how
+          mapping True to 1 makes the mean a share. Explain why this is a
+          pattern among selected personas rather than a claim about historical
+          populations.
+        </p>
+      </details>
+    </section>
+
+    <section class="page" id="history">
+      <div class="eyebrow">
+        03 / Group differences or historical change · birth cohorts
+      </div>
+      <h1>Change across <em>birth periods</em></h1>
+      <p class="intro">
+        Compare seven birth cohorts. The broad downward pattern is clear,
+        although it is not perfectly steady across every period.
+      </p>
+
+      <div class="chips">
+        <span class="chip">BCE → 1950–1999</span>
+        <span class="chip">7 cohorts</span>
+        <span class="chip">Cross-sectional comparison</span>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Desire to live forever by birth period</h2>
+          <p class="sub">
+            Share of real personas coded True · each dot is a cohort,
+            not a time-series measurement
+          </p>
+          <div class="chart-scroll">
+            <svg class="chart" id="history-chart" role="img"
+                 aria-label="Line chart of percent wanting to live forever across seven birth cohorts"></svg>
+          </div>
+          <div class="tip" id="history-tip" aria-live="polite">
+            Hover over a point to explore the data ✦
+          </div>
+          <button class="utility table-toggle" type="button"
+                  data-table="history-table" aria-expanded="false">
+            Show numbers
+          </button>
+          <div class="data-table" id="history-table" hidden></div>
         </div>
-        <div class="tip" id="history-tip" aria-live="polite">Hover over a point to explore the data ✦</div>
+
+        <div class="card side">
+          <span class="eyebrow">Read the shape</span>
+          <div class="hero-number">
+            7 <span class="small-arrow">cohorts</span>
+          </div>
+          <p>
+            The share declines sharply across the earliest periods, then
+            stays near <strong>3–5%</strong> for births after 1800.
+          </p>
+          <div class="divider"></div>
+          <p>
+            <strong>Key nuance:</strong> 1900–1949 rises slightly compared
+            with 1800–1899. Describe an overall pattern, not an
+            uninterrupted decline.
+          </p>
+          <p class="callout">
+            Birth-cohort differences are not direct evidence of change
+            within the same people over time.
+          </p>
+        </div>
       </div>
-      <div class="card side">
-        <span class="eyebrow">Read the shape</span>
-        <div class="hero-number">7 <span style="font-size:.4em;color:var(--muted)">cohorts</span></div>
-        <p>The share declines sharply across the earliest periods, then stays near <strong>3–5%</strong> for births after 1800.</p>
-        <div class="divider"></div>
-        <p><strong>Key nuance:</strong> 1900–1949 rises slightly compared with 1800–1899. Describe an overall pattern, not an uninterrupted decline.</p>
-        <p class="callout">Birth-cohort differences are not direct evidence of change within the same people over time.</p>
+
+      <div class="explain">
+        <div class="mini">
+          <b>METHOD</b>
+          <p>Filter real personas, divide birth years into periods, then compute percent True.</p>
+        </div>
+        <div class="mini">
+          <b>RESULT</b>
+          <p>The earliest cohort is highest; the latest is lowest.</p>
+        </div>
+        <div class="mini">
+          <b>LIMIT</b>
+          <p>Period sizes vary. These are selected personas rather than a random sample.</p>
+        </div>
       </div>
-    </div>
-    <div class="explain">
-      <div class="mini"><b>METHOD</b><p>Filter real personas, divide birth years into periods, then compute percent True.</p></div>
-      <div class="mini"><b>RESULT</b><p>The earliest cohort is highest; the latest is lowest.</p></div>
-      <div class="mini"><b>LIMIT</b><p>Period sizes vary. These are selected personas rather than a random sample.</p></div>
-    </div>
-    <button class="code-toggle" aria-expanded="false">⌘ Show analysis code</button>
-    <div class="code-panel">
-      <pre>history_df = persona_df.loc[X_train_reg.index].copy()
+
+      <button class="code-toggle" aria-expanded="false">
+        ⌘ Show analysis code
+      </button>
+      <div class="code-panel">
+<pre>history_df = persona_df.loc[X_train_reg.index].copy()
 
 # Beholder bare virkelige mennesker
 history_df = history_df[
@@ -341,26 +385,14 @@ history_df = history_df[
 ].copy()
 
 bins = [
-    -np.inf,
-    0,
-    1000,
-    1500,
-    1800,
-    1900,
-    1950,
-    2000,
-    np.inf
+    -np.inf, 0, 1000, 1500, 1800,
+    1900, 1950, 2000, np.inf
 ]
 
 labels = [
-    "BCE",
-    "0 to 999",
-    "1000 to 1499",
-    "1500 to 1799",
-    "1800 to 1899",
-    "1900 to 1949",
-    "1950 to 1999",
-    "2000+"
+    "BCE", "0 to 999", "1000 to 1499",
+    "1500 to 1799", "1800 to 1899",
+    "1900 to 1949", "1950 to 1999", "2000+"
 ]
 
 history_df["period"] = pd.cut(
@@ -385,143 +417,36 @@ live_forever_by_period = (
     .groupby("period", observed=False)["live_forever_numeric"]
     .mean() * 100
 )</pre>
-      <p class="callout">From prosjekt.ipynb, cells 46–48. The plotted values on this site were recalculated using all real personas: replace the first line with <code>history_df = persona_df.copy()</code> before the real-person filter.</p>
+        <p class="callout">
+          From prosjekt.ipynb, cells 46–48. The plotted values on this site
+          were recalculated using all real personas: replace the first line
+          with <code>history_df = persona_df.copy()</code> before the
+          real-person filter.
+        </p>
+      </div>
+
+      <details>
+        <summary>Presenter notes · 4–5 minute route</summary>
+        <p>
+          Explain the question and the cohorts. Walk through the steep early
+          drop and the smaller later variation. Describe the 1900–1949 bump
+          honestly. Show pd.cut, groupby and mean; explain right=False means
+          the left endpoint belongs to each bin. Conclude that this is a
+          cross-sectional cohort comparison, not a longitudinal study.
+        </p>
+      </details>
+    </section>
+
+    <div class="controls">
+      <button class="arrow" id="prev">← Previous topic</button>
+      <span class="eyebrow">Use ← → keys to switch topics</span>
+      <button class="arrow" id="next">Next topic →</button>
     </div>
-    <details>
-      <summary>Presenter notes · 4–5 minute route</summary>
-      <p>Explain the question and the cohorts. Walk through the steep early drop and the smaller later variation. Describe the 1900–1949 bump honestly. Show pd.cut, groupby and mean; explain right=False means the left endpoint belongs to each bin. Conclude that this is a cross-sectional cohort comparison, not a longitudinal study.</p>
-    </details>
-  </section>
 
-  <div class="controls">
-    <button class="arrow" id="prev">← Previous topic</button>
-    <span class="eyebrow">Use ← → keys to switch topics</span>
-    <button class="arrow" id="next">Next topic →</button>
-  </div>
-  <footer>HUMAN PATTERNS THROUGH HISTORY · INF161 · Source: persona_survey(1).csv · Whole-dataset EDA; 9,000 real personas</footer>
-</main>
-
-<script>
-const labels=['BCE','0–999','1000–1499','1500–1799','1800–1899','1900–1949','1950–1999'];
-const counts=[663,705,987,1410,2083,2488,664];
-const liveN=[663,705,987,1410,2082,2487,664];
-const god=[85,100,100,95,70,50,50];
-const live=[34.54,22.9787,12.9686,7.8014,4.0346,5.1066,3.1627];
-const ns='http://www.w3.org/2000/svg';
-
-function el(tag,attrs,parent){
-  const x=document.createElementNS(ns,tag);
-  Object.entries(attrs).forEach(([k,v])=>x.setAttribute(k,v));
-  parent.appendChild(x);
-  return x;
-}
-
-function base(svg,max,ticks){
-  svg.setAttribute('viewBox','0 0 850 410');
-  const left=63,top=22,bottom=316,right=827;
-  for(let i=0;i<=ticks;i++){
-    let v=max*i/ticks,y=bottom-(bottom-top)*i/ticks;
-    el('line',{x1:left,y1:y,x2:right,y2:y,stroke:'#34405e','stroke-dasharray':'3 6'},svg);
-    let t=el('text',{x:left-12,y:y+4,fill:'#aebbd5','font-size':'12','text-anchor':'end'},svg);
-    t.textContent=Math.round(v)+'%';
-  }
-  labels.forEach((s,i)=>{
-    let t=el('text',{x:left+54+i*105,y:345,fill:'#c5d0eb','font-size':'11','text-anchor':'middle'},svg);
-    t.textContent=s;
-  });
-  return{left,top,bottom};
-}
-
-function bars(id,values,max,color,tipId,sample){
-  const s=document.getElementById(id),g=base(s,max,4);
-  values.forEach((v,i)=>{
-    let h=v/max*(g.bottom-g.top),x=g.left+22+i*105,y=g.bottom-h;
-    let b=el('rect',{class:'bar',x,y,width:64,height:h,rx:8,fill:color,'aria-label':`${labels[i]}: ${v.toFixed(1)} percent`},s);
-    const msg=`${labels[i]} · ${v.toFixed(1)}% · n = ${sample[i].toLocaleString()}`;
-    b.addEventListener('mouseenter',()=>document.getElementById(tipId).textContent=msg);
-    b.addEventListener('focus',()=>document.getElementById(tipId).textContent=msg);
-    b.setAttribute('tabindex','0');
-    let t=el('text',{x:x+32,y:y-9,fill:'#f4f4ff','font-size':'13','text-anchor':'middle'},s);
-    t.textContent=v.toFixed(v===100?0:1)+'%';
-  });
-}
-
-bars('god-chart',god,100,'#aa8bff','god-tip',counts);
-bars('surprise-chart',live,40,'#ff87b2','surprise-tip',liveN);
-
-const s=document.getElementById('history-chart'),g=base(s,40,4);
-const points=live.map((v,i)=>[g.left+54+i*105,g.bottom-v/40*(g.bottom-g.top)]);
-el('polyline',{points:points.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#69e8e7','stroke-width':'4','stroke-linejoin':'round'},s);
-points.forEach(([x,y],i)=>{
-  let c=el('circle',{class:'bar',cx:x,cy:y,r:9,fill:'#69e8e7',stroke:'#080b17','stroke-width':3,tabindex:0},s);
-  let msg=`${labels[i]} · ${live[i].toFixed(1)}% · n = ${liveN[i].toLocaleString()}`;
-  c.addEventListener('mouseenter',()=>document.getElementById('history-tip').textContent=msg);
-  c.addEventListener('focus',()=>document.getElementById('history-tip').textContent=msg);
-  let t=el('text',{x,y:y-18,fill:'#f4f4ff','font-size':'13','text-anchor':'middle'},s);
-  t.textContent=live[i].toFixed(1)+'%';
-});
-
-let current=0;
-const pages=[...document.querySelectorAll('.page')];
-const buttons=[...document.querySelectorAll('.nav')];
-
-function show(i){
-  current=(i+3)%3;
-  pages.forEach((p,k)=>p.classList.toggle('active',k===current));
-  buttons.forEach((b,k)=>{
-    b.classList.toggle('active',k===current);
-    b.setAttribute('aria-current',k===current?'page':'false');
-  });
-  document.getElementById('counter').textContent=`0${current+1} / 03`;
-  history.replaceState(null,'','#'+pages[current].id);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-buttons.forEach((b,i)=>b.addEventListener('click',()=>show(i)));
-document.getElementById('prev').onclick=()=>show(current-1);
-document.getElementById('next').onclick=()=>show(current+1);
-
-document.addEventListener('keydown',e=>{
-  if(e.target.tagName==='BUTTON')return;
-  if(e.key==='ArrowRight')show(current+1);
-  if(e.key==='ArrowLeft')show(current-1);
-});
-
-document.querySelectorAll('.code-toggle').forEach(b=>b.onclick=()=>{
-  let p=b.nextElementSibling,open=p.classList.toggle('open');
-  b.setAttribute('aria-expanded',open);
-  b.textContent=open?'⌘ Hide analysis code':'⌘ Show analysis code';
-});
-
-let initial=pages.findIndex(p=>'#'+p.id===location.hash);
-if(initial>=0)show(initial);
-
-const butterfly=document.getElementById('butterfly');
-let mouseX=-100,mouseY=-100,flyX=-100,flyY=-100;
-
-document.addEventListener('pointermove',e=>{
-  if(e.pointerType==='touch')return;
-  mouseX=e.clientX+18;
-  mouseY=e.clientY-32;
-  butterfly.classList.add('visible');
-  butterfly.classList.toggle('glow',!!e.target.closest('button,.bar,summary,a'));
-});
-document.addEventListener('pointerleave',()=>butterfly.classList.remove('visible'));
-
-function follow(){
-  flyX+=(mouseX-flyX)*.13;
-  flyY+=(mouseY-flyY)*.13;
-  butterfly.style.transform=`translate(${flyX}px,${flyY}px)`;
-  requestAnimationFrame(follow);
-}
-
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  follow();
-}else{
-  document.addEventListener('pointermove',()=>{
-    butterfly.style.transform=`translate(${mouseX}px,${mouseY}px)`;
-  });
-}
-</script>
+    <footer>
+      HUMAN PATTERNS THROUGH HISTORY · INF161 · Source: persona_survey(1).csv ·
+      Whole-dataset EDA; 9,000 real personas
+    </footer>
+  </main>
 </body>
 </html>
