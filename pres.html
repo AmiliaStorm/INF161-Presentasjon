@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Human Patterns Through History — Amilia</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="pres.css">
+  <script src="pres.js" defer></script>
 </head>
 <body>
   <header>
@@ -17,7 +17,9 @@
       <button class="nav" data-page="2">03 · History</button>
     </nav>
 
-    <button class="utility" id="fullscreen" type="button">⛶ Fullscreen</button>
+    <button class="utility" id="fullscreen" type="button">
+      ⛶ Fullscreen
+    </button>
     <span class="counter" id="counter">01 / 03</span>
   </header>
 
@@ -126,14 +128,26 @@ history_df = history_df[
 ].copy()
 
 bins = [
-    -np.inf, 0, 1000, 1500, 1800,
-    1900, 1950, 2000, np.inf
+    -np.inf,
+    0,
+    1000,
+    1500,
+    1800,
+    1900,
+    1950,
+    2000,
+    np.inf
 ]
 
 labels = [
-    "BCE", "0 to 999", "1000 to 1499",
-    "1500 to 1799", "1800 to 1899",
-    "1900 to 1949", "1950 to 1999", "2000+"
+    "BCE",
+    "0 to 999",
+    "1000 to 1499",
+    "1500 to 1799",
+    "1800 to 1899",
+    "1900 to 1949",
+    "1950 to 1999",
+    "2000+"
 ]
 
 history_df["period"] = pd.cut(
@@ -246,14 +260,26 @@ history_df = history_df[
 ].copy()
 
 bins = [
-    -np.inf, 0, 1000, 1500, 1800,
-    1900, 1950, 2000, np.inf
+    -np.inf,
+    0,
+    1000,
+    1500,
+    1800,
+    1900,
+    1950,
+    2000,
+    np.inf
 ]
 
 labels = [
-    "BCE", "0 to 999", "1000 to 1499",
-    "1500 to 1799", "1800 to 1899",
-    "1900 to 1949", "1950 to 1999", "2000+"
+    "BCE",
+    "0 to 999",
+    "1000 to 1499",
+    "1500 to 1799",
+    "1800 to 1899",
+    "1900 to 1949",
+    "1950 to 1999",
+    "2000+"
 ]
 
 history_df["period"] = pd.cut(
@@ -385,14 +411,26 @@ history_df = history_df[
 ].copy()
 
 bins = [
-    -np.inf, 0, 1000, 1500, 1800,
-    1900, 1950, 2000, np.inf
+    -np.inf,
+    0,
+    1000,
+    1500,
+    1800,
+    1900,
+    1950,
+    2000,
+    np.inf
 ]
 
 labels = [
-    "BCE", "0 to 999", "1000 to 1499",
-    "1500 to 1799", "1800 to 1899",
-    "1900 to 1949", "1950 to 1999", "2000+"
+    "BCE",
+    "0 to 999",
+    "1000 to 1499",
+    "1500 to 1799",
+    "1800 to 1899",
+    "1900 to 1949",
+    "1950 to 1999",
+    "2000+"
 ]
 
 history_df["period"] = pd.cut(
